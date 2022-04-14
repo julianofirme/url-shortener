@@ -1,12 +1,9 @@
-import express, { Application, Request, Response } from 'express'
+import express, { Application } from 'express'
+import router from './api/routes/app.routes';
 
 const app: Application = express();
-const PORT = process.env.PORT || 3030;
 
-app.get('/urls', (req: Request, res: Response) => {
-  res.send('Hello')
-})
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.listen(PORT, function () {
-  console.log(`App is listening on port ${PORT}!`)
-})
+app.use("/api", router)
