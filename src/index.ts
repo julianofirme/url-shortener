@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3030;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/api", router)
+app.use("/", router)
 
 app.listen(PORT, () => {
   console.log(`:::App is listening on port ${PORT}!`)
