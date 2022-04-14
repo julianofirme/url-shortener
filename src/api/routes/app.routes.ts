@@ -26,4 +26,21 @@ router.post('/urls', async (req, res) => {
   res.status(200).json({ url: shortUrl })
 })
 
+router.get('/:hash', async (req, res) => {
+  try {
+    const hash = req.params.hash
+
+    if (!hash) {
+      res.status(404).json({ error: "Not found url" });
+    }
+    
+    const url = urls.filter(url => url.hash == hash)[0]
+
+    return res.redirect(url.original_url);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json('Server Error');
+  }
+});
+
 export default router;
