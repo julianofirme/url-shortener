@@ -2,8 +2,9 @@ import { Request, Response, Router } from "express";
 import shortid from "shortid";
 import { Url } from "../models/Url";
 import { validateUrl } from "../utils";
+import 'dotenv/config'
 
-const baseUrl = 'http://localhost:3000'
+const baseUrl = `http://localhost/${process.env.PORT}`
 
 export class UrlController {
   public router: Router;
