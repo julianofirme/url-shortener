@@ -12,13 +12,16 @@
   "license": "ISC",
   "dependencies": {
     "@types/shortid": "^0.0.29",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mongoose": "^6.2.11",
-    "shortid": "^2.2.16"
+    "pg": "^8.7.3",
+    "shortid": "^2.2.16",
+    "typeorm": "^0.3.6"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
-    "@types/node": "^17.0.23",
+    "@types/node": "^17.0.24",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "eslint": "^8.13.0",

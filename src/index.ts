@@ -1,12 +1,16 @@
 import express, { Application } from 'express'
 import router from './api/routes/app.routes';
+import 'dotenv/config'
+import connection from './api/db';
 
 const app: Application = express();
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT;
  
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+connection.create();
 
 app.use("/", router)
 
