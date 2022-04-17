@@ -1,7 +1,7 @@
 import express, { Application } from 'express'
 import router from './api/routes/app.routes';
 import 'dotenv/config'
-import { connection, sequelize } from './api/db';
+import { connection } from './api/db';
 
 const app: Application = express();
 const PORT = process.env.PORT;

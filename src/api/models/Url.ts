@@ -1,10 +1,11 @@
-import { DataTypes } from "sequelize/types";
+import { DataTypes } from "sequelize";
 import { sequelize } from "../db";
 
 export const Url = sequelize.define('Url', {
   id: {
     type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
   },
   original_url: {
     type: DataTypes.STRING
