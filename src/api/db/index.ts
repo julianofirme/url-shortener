@@ -1,23 +1,25 @@
-import { createConnection, getConnection } from "typeorm";
+import { Sequelize } from 'sequelize';
+import 'dotenv/config'
 
-const connection = {
-  async create() {
-    const connect = await createConnection("url-shortener");
-    console.log(`:::App connect to db -> ${connect.options.database}`);
-  },
 
-  async close() {
-    await getConnection().close();
-  },
+const sequelize = new Sequelize(
+  `${process.env.POSTGRES_DB}`,
+  `${process.env.POSTGRES_USER}`,
+  `${process.env.POSTGRES_PASSWORD}`,
+  {
+    host: 'localhost',
+    dialect: 'postgres',
+    port: Number(process.env.POSTGRES_PORT)
+  }
+)
 
-  async clear() {
-    const connection = getConnection();
-    const entities = connection.entityMetadatas;
+async function connection() {
+  try {
+    await sequelize.authenticate();
+    console.log(`:::Connected to database -> ${process.env.POSTGRES_DB}`);
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
 
-    entities.forEach(async (entity) => {
-      const repository = connection.getRepository(entity.name);
-      await repository.query(`DELETE FROM ${entity.tableName}`);
-    });
-  },
-};
-export default connection;
+export { connection, sequelize }
