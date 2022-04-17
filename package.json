@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "lint": "eslint . --fix",
-    "db:migrate": "npx sequelize-cli db:migrate --config config.js"
+    "db:migrate": "npx sequelize-cli db:migrate"
   },
   "keywords": [],
   "author": "",
