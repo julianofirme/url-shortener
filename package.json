@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "db:migrate": "npx sequelize-cli db:migrate --config config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/sequelize": "^4.28.11",
     "@types/shortid": "^0.0.29",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
@@ -18,6 +20,7 @@
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.19.0",
+    "sequelize-cli": "^6.4.1",
     "shortid": "^2.2.16"
   },
   "devDependencies": {
