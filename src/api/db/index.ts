@@ -1,21 +1,18 @@
 import { Sequelize } from 'sequelize';
 import 'dotenv/config'
 
+const connectionString = `postgresql://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT}/${process.env.POSTGRES_DB}`
 
-let sequelize = new Sequelize(
-  `${process.env.POSTGRES_DB}`,
-  `${process.env.POSTGRES_USER}`,
-  `${process.env.POSTGRES_PASSWORD}`,
+const isProduction = process.env.NODE_ENV === "production"
+
+const sequelize = new Sequelize(
+  isProduction ?
+    `${process.env.DATABASE_URL}` :
+    connectionString,
   {
-    host: `${process.env.POSTGRES_HOST}`,
-    dialect: 'postgres',
-    port: Number(process.env.POSTGRES_PORT)
+    ssl: isProduction
   }
-)
-
-if (process.env.NODE_ENV === "production") {
-  sequelize = new Sequelize(`${process.env.DATABASE_URL}`);
-}
+);
 
 async function connection() {
   try {
