@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const UrlController_1 = require("../controllers/UrlController");
+exports.router = (0, express_1.Router)();
+const urlController = new UrlController_1.UrlController();
+exports.router.post('/urls', urlController.create);
+exports.router.get('/:hash', urlController.getUrl);
+exports.default = exports.router;
