@@ -4,9 +4,11 @@ import 'dotenv/config'
 
 const sequelize = new Sequelize(
   `${process.env.DATABASE_URL}`, {
-  host: `${process.env.POSTGRES_HOST}`,
   dialect: 'postgres',
-  port: Number(process.env.POSTGRES_PORT)
+  protocol: 'postgres',
+  dialectOptions: {
+    ssl: true
+  }
 }
 )
 
