@@ -4,7 +4,7 @@ import { Url } from "../models/Url";
 import { validateUrl } from "../utils";
 import 'dotenv/config'
 
-const baseUrl = `http://localhost/${process.env.PORT || 3030}`
+const baseUrl = process.env.DOMAIN
 
 export class UrlController {
   public router: Router;
