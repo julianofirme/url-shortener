@@ -8,7 +8,7 @@ const app_routes_1 = __importDefault(require("./api/routes/app.routes"));
 require("dotenv/config");
 const db_1 = require("./api/db");
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3000;
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
 (0, db_1.connection)();
