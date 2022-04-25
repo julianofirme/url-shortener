@@ -1,7 +1,6 @@
 var path = require('path')
 
 module.exports = {
-  'config': path.resolve('config', 'config.js'),
   'models-path': path.resolve('src/api/models'),
   'migrations-path': path.resolve('src/api/migrations'),
 }

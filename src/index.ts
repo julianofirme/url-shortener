@@ -4,7 +4,7 @@ import 'dotenv/config'
 import { connection } from './api/db';
 
 const app: Application = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3030;
  
 
 app.use(express.urlencoded({ extended: true }));
