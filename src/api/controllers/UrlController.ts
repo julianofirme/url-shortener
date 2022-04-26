@@ -46,7 +46,7 @@ export class UrlController {
     
     const url = JSON.stringify(sqlResponse)
     
-    if (!url) {
+    if (url === '') {
       res.status(404).json({ error: "Not found url" });
       return;
     }
