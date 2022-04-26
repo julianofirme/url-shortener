@@ -16,6 +16,9 @@ npm install
 - Create an .env file in project root and copy the .env.example variables
 
 ```bash
+# Run containers
+docker-compose up -d
+
 # Run migrations
 npm run db:migrate
 
