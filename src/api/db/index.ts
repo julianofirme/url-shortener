@@ -17,7 +17,7 @@ const sequelize = new Sequelize(
 async function connection() {
   try {
     await sequelize.authenticate();
-    console.log(`:::Connected to database -> ${process.env.POSTGRES_DB}`);
+    console.log(`:::Connected to database`);
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }
