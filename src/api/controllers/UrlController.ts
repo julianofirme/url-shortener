@@ -33,7 +33,7 @@ export class UrlController {
   getUrl = async (req: Request, res: Response) => {
     const hash = req.params.hash
     
-    if (hash.length !== 5) {
+    if (hash.length < 5) {
       res.status(404).json({ error: "Not found url" });
       return;
     }
