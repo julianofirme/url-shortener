@@ -6,7 +6,7 @@ export const router = Router();
 
 const urlController = new UrlController()
 
-router.post('/urls', urlController.create)
+router.post('/url', urlController.create)
 
 router.get('/:hash', urlController.getUrl);
 
