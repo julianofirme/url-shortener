@@ -15,6 +15,11 @@ export class UrlController {
 
   create = async (req: Request, res: Response) => {
     const { original_url } = req.body;
+
+    if (!original_url) {
+      res.status(400).json({ error: 'Missing url' });
+    }
+
     const isValidUrl = validateUrl(original_url);
 
     if (!isValidUrl) {
