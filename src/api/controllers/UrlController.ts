@@ -2,15 +2,15 @@ import { Request, Response, Router } from "express";
 import shortid from "shortid";
 import { Url } from "../models/Url";
 import { validateUrl } from "../utils";
-import 'dotenv/config'
+import 'dotenv/config';
 
-const baseUrl = process.env.DOMAIN
+const baseUrl = process.env.DOMAIN;
 
 export class UrlController {
   public router: Router;
 
   constructor() {
-    this.router = Router()
+    this.router = Router();
   }
 
   create = async (req: Request, res: Response) => {
@@ -18,6 +18,7 @@ export class UrlController {
 
     if (!original_url) {
       res.status(400).json({ error: 'Missing url' });
+      return;
     }
 
     const isValidUrl = validateUrl(original_url);
@@ -26,31 +27,31 @@ export class UrlController {
       res.status(422).json({ error: "Invalid url" });
       return;
     }
-    
+
     const hash = shortid.generate();
-    const shortUrl = `${baseUrl}/${hash}`
-    
-    await Url.create({ original_url, hash })
-    
-    res.status(200).json({ url: shortUrl })
+    const shortUrl = `${baseUrl}/${hash}`;
+
+    await Url.create({ original_url, hash });
+
+    res.status(200).json({ url: shortUrl });
   }
-  
+
   getUrl = async (req: Request, res: Response) => {
-    const hash = req.params.hash
-    
+    const hash = req.params.hash;
+
     if (hash.length < 5) {
       res.status(404).json({ error: "Not found url" });
       return;
     }
-    
+
     const sqlResponse = await Url.findOne({
       where: {
         hash
       }
-    })
-    
-    const url = JSON.stringify(sqlResponse)
-    
+    });
+
+    const url = JSON.stringify(sqlResponse);
+
     if (url === '') {
       res.status(404).json({ error: "Not found url" });
       return;
